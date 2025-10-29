@@ -75,8 +75,9 @@ function LineGraph({ casesType = 'cases', ...props }) {
                 .then((data) => {
                     let chartData = buildChartData(data, casesType);
                     setData(chartData);
-                    console.log(chartData);
-                    // buildChart(chartData);
+                })
+                .catch((error) => {
+                    console.error('Error fetching historical data:', error);
                 });
         };
 
