@@ -1,6 +1,6 @@
 .tables {
   margin-top: 20px;
-  overflow: scroll;
+  overflow-y: auto;
   height: 400px;
   color: #6a5d5d;
 }

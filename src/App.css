@@ -51,6 +51,18 @@ body {
   margin-top: 10px;
 }
 
+.app__loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.app__loading h1 {
+  color: #542e71;
+  font-size: 2rem;
+}
+
 @media (max-width: 990px) {
   .app {
     flex-direction: column;
