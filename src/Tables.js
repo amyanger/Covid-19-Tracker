@@ -5,16 +5,20 @@ import numeral from 'numeral';
 function Tables({ countries }) {
     return (
         <div className='tables'>
-            {countries.map(({ country, cases }) => (
-                <tr>
-                    <td>
-                        {country}
-                    </td>
-                    <td>
-                        <strong>{numeral(cases).format('0,0')}</strong>
-                    </td>
-                </tr>
-            ))}
+            <table>
+                <tbody>
+                    {countries.map(({ country, cases }) => (
+                        <tr key={country}>
+                            <td>
+                                {country}
+                            </td>
+                            <td>
+                                <strong>{numeral(cases).format('0,0')}</strong>
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
         </div>
     )
 }
