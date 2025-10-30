@@ -38,15 +38,20 @@ function App() {
       await fetch('https://disease.sh/v3/covid-19/countries')
         .then((response) => response.json())
         .then((data) => {
-          const countries = data.map((country) => (
-            {
+          const countries = data
+            .filter((country) => country.countryInfo.iso2)
+            .map((country) => ({
               name: country.country,
               value: country.countryInfo.iso2
             }));
 
           const sortedData = sortData(data);
           setTableData(sortedData);
-          setMapCountries(data);
+
+          const mapCountriesFiltered = data.filter(
+            (country) => country.countryInfo.lat && country.countryInfo.long
+          );
+          setMapCountries(mapCountriesFiltered);
           setCountries(countries);
         })
         .catch(error => {
@@ -67,10 +72,14 @@ function App() {
       .then(data => {
         setCountry(countryCode);
         setCountryInfo(data);
-        setMapCenter(countryCode === 'worldwide'
-          ? { lat: 34.80746, lng: -40.4796 }
-          : [data.countryInfo.lat, data.countryInfo.long]);
-        setMapZoom(4);
+
+        if (countryCode === 'worldwide') {
+          setMapCenter({ lat: 34.80746, lng: -40.4796 });
+          setMapZoom(3);
+        } else if (data.countryInfo?.lat && data.countryInfo?.long) {
+          setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
+          setMapZoom(4);
+        }
       })
       .catch(error => {
         console.error('Error fetching country data:', error);
