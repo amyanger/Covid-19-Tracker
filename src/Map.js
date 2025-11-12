@@ -7,7 +7,7 @@ function Map({ countries, casesType, center, zoom }) {
     return (
         <div className='map'>
             <LeafletMap
-                key={center ? `${center.lat || center[0]}-${center.lng || center[1]}` : 'default'}
+                key={center ? `${center[0]}-${center[1]}` : 'default'}
                 center={center}
                 zoom={zoom}
             >

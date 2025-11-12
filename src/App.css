@@ -63,6 +63,44 @@ body {
   font-size: 2rem;
 }
 
+.app__error {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  padding: 20px;
+}
+
+.app__error h1 {
+  color: #cc1034;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.app__error p {
+  color: #555;
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  max-width: 500px;
+}
+
+.app__error button {
+  background-color: #542e71;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.app__error button:hover {
+  background-color: #3d2050;
+}
+
 @media (max-width: 990px) {
   .app {
     flex-direction: column;
